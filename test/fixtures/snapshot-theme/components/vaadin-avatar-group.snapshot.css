@@ -1,32 +1,31 @@
-/* Simple, single quotes */
+/* Simple selector */
 ::slotted(vaadin-avatar) {
-    --foo: bar;
-}
-
-/* Simple, double quotes */
-::slotted(vaadin-avatar) {
-    --foo: bar;
-}
-
-/* With sequence */
-::slotted(vaadin-avatar:not(:first-child)) {
-    --foo: bar;
-}
-
-/* Not last in sequence - unsupported */
-/* TODO: Automatic migration failed. [part='avatar'] should be converted to ::slotted(vaadin-avatar) */
-[part="avatar"]:not(:first-child) .foo {
-    --foo: bar;
-}
-
-/* Wrapped in sequence - not implemented */
-/* TODO: Automatic migration failed. [part='avatar'] should be converted to ::slotted(vaadin-avatar) */
-*:not([part='avatar']) {
     --foo: bar;
 }
 
 /* Compound selector */
+::slotted(vaadin-avatar:not(:first-child)) {
+    --foo: bar;
+}
+
+/* Compound selector with tag name */
+::slotted(vaadin-avatar) {
+    --foo: bar;
+}
+
+/* Complex selector */
 :host.foo ::slotted(vaadin-avatar) {
+    --foo: bar;
+}
+
+/* Complex selector, not last in sequence - unsupported */
+/* TODO: Migration issue: Combining selectors after ::slotted() is not supported */
+::slotted(vaadin-avatar:not(:first-child)) .foo {
+    --foo: bar;
+}
+
+/* Wrapped in pseudo */
+*:not(::slotted(vaadin-avatar)) {
     --foo: bar;
 }
 
