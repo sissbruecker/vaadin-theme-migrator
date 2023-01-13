@@ -14,7 +14,6 @@ async function migrate(themeLocation) {
       `${basename}.generated.css`
     );
 
-    console.log(`Processing ${inputFile} -> ${outputFile}`);
     const contents = fs.readFileSync(inputFile);
 
     const output = await postcss([partToSlottedElement]).process(contents, {

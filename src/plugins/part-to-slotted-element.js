@@ -51,7 +51,7 @@ function createSelectorTransformer(config, rule) {
         attributeNode.attribute === "part" &&
         attributeNode.value === config.partName
       ) {
-        // Extract full compound selector sequence that contains until next combinator
+        // Extract full compound selector sequence
         const compoundSelector = extractCompoundSelector(attributeNode);
 
         // Create slotted selector with tag name
@@ -63,7 +63,7 @@ function createSelectorTransformer(config, rule) {
 
         // Clone compound selector into slotted selector
         compoundSelector.forEach((node) => {
-          // Ignore attribute node
+          // Ignore current attribute node
           // Ignore tag nodes, makes no sense to combine them with the new slotted selector tag name
           if (node !== attributeNode && node.type !== "tag") {
             slottedSelector.append(node.clone());
