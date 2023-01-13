@@ -57,7 +57,7 @@ function createSelectorTransformer(config, rule) {
         // Create slotted selector with tag name
         const slottedNode = parser.pseudo({ value: "::slotted" });
         const slottedSelector = parser.selector();
-        const tagNode = parser.tag({ value: "vaadin-avatar" });
+        const tagNode = parser.tag({ value: config.element });
         slottedNode.append(slottedSelector);
         slottedSelector.append(tagNode);
 
