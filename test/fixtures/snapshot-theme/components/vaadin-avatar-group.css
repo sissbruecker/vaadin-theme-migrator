@@ -1,0 +1,34 @@
+/* Simple, single quotes */
+[part='avatar'] {
+    --foo: bar;
+}
+
+/* Simple, double quotes */
+[part="avatar"] {
+    --foo: bar;
+}
+
+/* With sequence */
+[part="avatar"]:not(:first-child) {
+    --foo: bar;
+}
+
+/* Not last in sequence - unsupported */
+[part="avatar"]:not(:first-child) .foo {
+    --foo: bar;
+}
+
+/* Wrapped in sequence - not implemented */
+*:not([part='avatar']) {
+    --foo: bar;
+}
+
+/* Compound selector */
+:host.foo [part='avatar'] {
+    --foo: bar;
+}
+
+/* Selector list */
+:host.foo [part='avatar'], :host.bar [part='avatar']:not(:first-child) {
+    --foo: bar;
+}

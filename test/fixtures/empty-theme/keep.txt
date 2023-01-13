@@ -1,0 +1,1 @@
+This file just ensures the folder is kept in git.
