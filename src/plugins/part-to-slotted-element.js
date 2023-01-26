@@ -41,6 +41,10 @@ function hasFollowingCombinator(childNode) {
   return false;
 }
 
+function containsPartSelector(selector) {
+  return selector.nodes.some(node => node.type === 'pseudo' && node.value === '::part')
+}
+
 function createSelectorTransformer(config, rule) {
   return (selectors) => {
     const nodesToReplace = [];
@@ -83,6 +87,16 @@ function createSelectorTransformer(config, rule) {
             rule,
             config,
             "Combining selectors after ::slotted() is not supported"
+          );
+        }
+
+        // Output warning if new slotted selector contains part selector,
+        // which is not valid CSS
+        if (containsPartSelector(slottedSelector)) {
+          createTodo(
+            rule,
+            config,
+            "Part selector within ::slotted() is not supported"
           );
         }
       }

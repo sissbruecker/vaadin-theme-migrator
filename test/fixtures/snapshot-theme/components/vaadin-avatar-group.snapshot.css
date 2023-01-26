@@ -13,6 +13,12 @@
     --foo: bar;
 }
 
+/* Compound selector with part selector - unsupported */
+/* TODO: Migration issue: Part selector within ::slotted() is not supported */
+::slotted(vaadin-avatar::part(abbr)) {
+    --foo: bar;
+}
+
 /* Complex selector */
 :host.foo ::slotted(vaadin-avatar) {
     --foo: bar;

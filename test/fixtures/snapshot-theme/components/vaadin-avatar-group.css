@@ -13,6 +13,11 @@ vaadin-avatar[part="avatar"] {
     --foo: bar;
 }
 
+/* Compound selector with part selector - unsupported */
+[part="avatar"]::part(abbr) {
+    --foo: bar;
+}
+
 /* Complex selector */
 :host.foo [part='avatar'] {
     --foo: bar;
