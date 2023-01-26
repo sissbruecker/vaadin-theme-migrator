@@ -1,0 +1,12 @@
+/* Overlay content */
+[part="overlay-content"] {
+    --foo: bar;
+}
+
+:host.foo [part="overlay-content"] {
+    --foo: bar;
+}
+
+:host.foo [part="overlay-content"]:not(:first-child) {
+    --foo: bar;
+}

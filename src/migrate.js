@@ -5,6 +5,7 @@ const { getThemeInfo } = require("./theme");
 
 const plugins = [
   require("./plugins/vaadin-avatar-group"),
+  require("./plugins/vaadin-date-picker-overlay"),
   require("./plugins/vaadin-date-picker-overlay-content"),
 ];
 

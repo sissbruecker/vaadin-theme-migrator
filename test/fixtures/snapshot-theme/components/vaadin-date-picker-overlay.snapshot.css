@@ -1,0 +1,12 @@
+/* Overlay content */
+::slotted(vaadin-date-picker-overlay-content) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-date-picker-overlay-content) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-date-picker-overlay-content:not(:first-child)) {
+    --foo: bar;
+}
