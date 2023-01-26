@@ -2,7 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
 const { getThemeInfo } = require("./theme");
-const partToSlottedElement = require("./plugins/part-to-slotted-element");
+
+const plugins = [require("./plugins/vaadin-avatar-group")];
 
 async function migrate(themeLocation) {
   const theme = getThemeInfo(themeLocation);
@@ -16,7 +17,7 @@ async function migrate(themeLocation) {
 
     const contents = fs.readFileSync(inputFile);
 
-    const output = await postcss([partToSlottedElement]).process(contents, {
+    const output = await postcss(plugins).process(contents, {
       from: inputFile,
       to: outputFile,
     });

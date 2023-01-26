@@ -3,7 +3,15 @@
     --foo: bar;
 }
 
+::slotted(vaadin-avatar) {
+    --foo: bar;
+}
+
 /* Compound selector */
+::slotted(vaadin-avatar:not(:first-child)) {
+    --foo: bar;
+}
+
 ::slotted(vaadin-avatar:not(:first-child)) {
     --foo: bar;
 }
@@ -20,6 +28,10 @@
 }
 
 /* Complex selector */
+:host.foo ::slotted(vaadin-avatar) {
+    --foo: bar;
+}
+
 :host.foo ::slotted(vaadin-avatar) {
     --foo: bar;
 }

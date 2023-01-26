@@ -3,8 +3,16 @@
     --foo: bar;
 }
 
+vaadin-avatar {
+    --foo: bar;
+}
+
 /* Compound selector */
 [part="avatar"]:not(:first-child) {
+    --foo: bar;
+}
+
+vaadin-avatar:not(:first-child) {
     --foo: bar;
 }
 
@@ -23,6 +31,10 @@ vaadin-avatar[part="avatar"] {
     --foo: bar;
 }
 
+:host.foo vaadin-avatar {
+    --foo: bar;
+}
+
 /* Complex selector, not last in sequence - unsupported */
 [part="avatar"]:not(:first-child) .foo {
     --foo: bar;
@@ -34,6 +46,6 @@ vaadin-avatar[part="avatar"] {
 }
 
 /* Selector list */
-:host.foo [part='avatar'], :host.bar [part='avatar']:not(:first-child) {
+:host.foo vaadin-avatar, :host.bar [part='avatar']:not(:first-child) {
     --foo: bar;
 }
