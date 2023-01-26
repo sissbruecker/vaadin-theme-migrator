@@ -1,0 +1,72 @@
+/* Months */
+::slotted(vaadin-date-picker-month-scroller) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-date-picker-month-scroller) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-date-picker-month-scroller:not(:first-child)) {
+    --foo: bar;
+}
+
+/* Years */
+::slotted(vaadin-date-picker-year-scroller) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-date-picker-year-scroller) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-date-picker-year-scroller:not(:first-child)) {
+    --foo: bar;
+}
+
+/* Today button */
+::slotted(vaadin-button[slot="today-button"]) {
+    --foo: bar;
+}
+
+::slotted(vaadin-button[slot="today-button"]) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-button[slot="today-button"]) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-button[slot="today-button"]:not(:first-child)) {
+    --foo: bar;
+}
+
+/* Cancel button */
+::slotted(vaadin-button[slot="cancel-button"]) {
+    --foo: bar;
+}
+
+::slotted(vaadin-button[slot="cancel-button"]) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-button[slot="cancel-button"]) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-button[slot="cancel-button"]:not(:first-child)) {
+    --foo: bar;
+}
+
+/* Either button */
+::slotted(vaadin-button) {
+    --foo: bar;
+}
+
+::slotted(vaadin-button[theme="primary"]) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-button[theme="primary"]:not(:first-child)) {
+    --foo: bar;
+}

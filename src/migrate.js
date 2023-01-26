@@ -3,7 +3,10 @@ const path = require("path");
 const postcss = require("postcss");
 const { getThemeInfo } = require("./theme");
 
-const plugins = [require("./plugins/vaadin-avatar-group")];
+const plugins = [
+  require("./plugins/vaadin-avatar-group"),
+  require("./plugins/vaadin-date-picker-overlay-content"),
+];
 
 async function migrate(themeLocation) {
   const theme = getThemeInfo(themeLocation);

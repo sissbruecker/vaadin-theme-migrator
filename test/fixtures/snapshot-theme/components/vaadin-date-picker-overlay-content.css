@@ -1,0 +1,72 @@
+/* Months */
+[part="months"] {
+    --foo: bar;
+}
+
+:host.foo [part="months"] {
+    --foo: bar;
+}
+
+:host.foo [part="months"]:not(:first-child) {
+    --foo: bar;
+}
+
+/* Years */
+[part="years"] {
+    --foo: bar;
+}
+
+:host.foo [part="years"] {
+    --foo: bar;
+}
+
+:host.foo [part="years"]:not(:first-child) {
+    --foo: bar;
+}
+
+/* Today button */
+[part="today-button"] {
+    --foo: bar;
+}
+
+vaadin-button[part="today-button"] {
+    --foo: bar;
+}
+
+:host.foo [part="today-button"] {
+    --foo: bar;
+}
+
+:host.foo [part="today-button"]:not(:first-child) {
+    --foo: bar;
+}
+
+/* Cancel button */
+[part="cancel-button"] {
+    --foo: bar;
+}
+
+vaadin-button[part="cancel-button"] {
+    --foo: bar;
+}
+
+:host.foo [part="cancel-button"] {
+    --foo: bar;
+}
+
+:host.foo [part="cancel-button"]:not(:first-child) {
+    --foo: bar;
+}
+
+/* Either button */
+vaadin-button {
+    --foo: bar;
+}
+
+vaadin-button[theme="primary"] {
+    --foo: bar;
+}
+
+:host.foo vaadin-button[theme="primary"]:not(:first-child) {
+    --foo: bar;
+}
