@@ -1,0 +1,41 @@
+/* Refactor date part selector operator */
+[part="date"] {
+    --foo: bar;
+}
+
+[part="ignore-me"] {
+    --foo: bar;
+}
+
+/* Refactor state attribute */
+[disabled] {
+    --foo: bar;
+}
+
+[focused] {
+    --foo: bar;
+}
+
+[selected] {
+    --foo: bar;
+}
+
+[today] {
+    --foo: bar;
+}
+
+[part='date'][focused] {
+    --foo: bar;
+}
+
+[part='date']:not(:empty) {
+    --foo: bar;
+}
+
+:host [part='date']:not(:empty) {
+    --foo: bar;
+}
+
+[ignore-me] {
+    --foo: bar;
+}

@@ -7,6 +7,7 @@ const componentPlugins = [
   "vaadin-avatar-group",
   "vaadin-date-picker-overlay",
   "vaadin-date-picker-overlay-content",
+  "vaadin-month-calendar",
 ];
 
 function getPlugins(componentFile) {
