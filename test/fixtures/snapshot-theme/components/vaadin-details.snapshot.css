@@ -1,0 +1,28 @@
+/* Refactor slotted details summary */
+::slotted([slot="summary"]) {
+    --foo: bar;
+}
+
+::slotted([slot="summary"]) {
+    --foo: bar;
+}
+
+::slotted([slot="summary"]:first-child) {
+    --foo: bar;
+}
+
+/* TODOs */
+/* TODO: Migration issue: Move this rule to vaadin-details-summary.css */
+[part="toggle"] {
+    --foo: bar;
+}
+
+/* TODO: Migration issue: Move this rule to vaadin-details-summary.css */
+
+[part="summary-content"] {
+    --foo: bar;
+}
+
+[part="ignore-me"] {
+    --foo: bar;
+}

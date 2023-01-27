@@ -56,7 +56,13 @@ function createTodo(rule, text) {
 /**
  * Replaces a selector node, such as an attribute selector, with a slotted selector
  */
-function convertToSlottedSelector({ rule, walker, matcher, replacer }) {
+function convertToSlottedSelector({
+  rule,
+  walker,
+  matcher,
+  replacer,
+  customizer,
+}) {
   const transformations = [];
 
   walker((visitedNode) => {
@@ -92,6 +98,11 @@ function convertToSlottedSelector({ rule, walker, matcher, replacer }) {
     compoundSelector.forEach((node) =>
       transformations.push(() => node.remove())
     );
+
+    // Run customizer if provided
+    if (customizer) {
+      customizer(slottedSelector);
+    }
 
     // Output warning if there is a combinator after the new ::slotted selector,
     // which is not valid CSS
