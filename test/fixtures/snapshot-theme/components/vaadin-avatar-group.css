@@ -49,3 +49,16 @@ vaadin-avatar[part="avatar"] {
 :host.foo vaadin-avatar, :host.bar [part='avatar']:not(:first-child) {
     --foo: bar;
 }
+
+/* List box */
+vaadin-avatar-group-list-box {
+    --foo: bar;
+}
+
+:host.foo vaadin-avatar-group-list-box {
+    --foo: bar;
+}
+
+:host.foo vaadin-avatar-group-list-box:not(:first-child) {
+    --foo: bar;
+}

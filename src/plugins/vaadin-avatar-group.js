@@ -10,18 +10,45 @@ function createSelectorTransformer(rule) {
         attributeNode.attribute === "part" &&
         attributeNode.value === "avatar"
       ) {
-        const tagNode = parser.tag({ value: "vaadin-avatar" });
-        convertToSlottedSelector(rule, transformations, attributeNode, tagNode);
+        const replacementNode = parser.tag({ value: "vaadin-avatar" });
+        convertToSlottedSelector(
+          rule,
+          transformations,
+          attributeNode,
+          replacementNode
+        );
       }
     });
     transformations.forEach((transformation) => transformation());
 
     // vaadin-avatar -> ::slotted[vaadin-avatar]
     transformations = [];
-    selectors.walkTags((attributeNode) => {
-      if (attributeNode.value === "vaadin-avatar") {
-        const tagNode = parser.tag({ value: "vaadin-avatar" });
-        convertToSlottedSelector(rule, transformations, attributeNode, tagNode);
+    selectors.walkTags((tagNode) => {
+      if (tagNode.value === "vaadin-avatar") {
+        const replacementNode = parser.tag({ value: "vaadin-avatar" });
+        convertToSlottedSelector(
+          rule,
+          transformations,
+          tagNode,
+          replacementNode
+        );
+      }
+    });
+    transformations.forEach((transformation) => transformation());
+
+    // vaadin-avatar-group-list-box -> ::slotted[vaadin-avatar-group-list-box]
+    transformations = [];
+    selectors.walkTags((tagNode) => {
+      if (tagNode.value === "vaadin-avatar-group-list-box") {
+        const replacementNode = parser.tag({
+          value: "vaadin-avatar-group-list-box",
+        });
+        convertToSlottedSelector(
+          rule,
+          transformations,
+          tagNode,
+          replacementNode
+        );
       }
     });
     transformations.forEach((transformation) => transformation());

@@ -51,3 +51,16 @@
 :host.foo ::slotted(vaadin-avatar), :host.bar ::slotted(vaadin-avatar:not(:first-child)) {
     --foo: bar;
 }
+
+/* List box */
+::slotted(vaadin-avatar-group-list-box) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-avatar-group-list-box) {
+    --foo: bar;
+}
+
+:host.foo ::slotted(vaadin-avatar-group-list-box:not(:first-child)) {
+    --foo: bar;
+}
