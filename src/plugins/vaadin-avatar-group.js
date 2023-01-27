@@ -5,56 +5,30 @@ function createSelectorTransformer(rule) {
   return (selectors) => {
     // [part='avatar'] -> ::slotted(vaadin-avatar)
     // https://github.com/vaadin/web-components/pull/4723
-    let transformations = [];
-    selectors.walkAttributes((attributeNode) => {
-      if (
-        attributeNode.attribute === "part" &&
-        attributeNode.value === "avatar"
-      ) {
-        const replacementNode = parser.tag({ value: "vaadin-avatar" });
-        convertToSlottedSelector(
-          rule,
-          transformations,
-          attributeNode,
-          replacementNode
-        );
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkAttributes.bind(selectors),
+      matcher: (node) => node.attribute === "part" && node.value === "avatar",
+      replacer: () => parser.tag({ value: "vaadin-avatar" }),
     });
-    transformations.forEach((transformation) => transformation());
 
     // vaadin-avatar -> ::slotted(vaadin-avatar)
     // https://github.com/vaadin/web-components/pull/4723
-    transformations = [];
-    selectors.walkTags((tagNode) => {
-      if (tagNode.value === "vaadin-avatar") {
-        const replacementNode = parser.tag({ value: "vaadin-avatar" });
-        convertToSlottedSelector(
-          rule,
-          transformations,
-          tagNode,
-          replacementNode
-        );
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkTags.bind(selectors),
+      matcher: (node) => node.value === "vaadin-avatar",
+      replacer: () => parser.tag({ value: "vaadin-avatar" }),
     });
-    transformations.forEach((transformation) => transformation());
 
     // vaadin-avatar-group-list-box -> ::slotted(vaadin-avatar-group-list-box)
     // https://github.com/vaadin/web-components/pull/3905
-    transformations = [];
-    selectors.walkTags((tagNode) => {
-      if (tagNode.value === "vaadin-avatar-group-list-box") {
-        const replacementNode = parser.tag({
-          value: "vaadin-avatar-group-list-box",
-        });
-        convertToSlottedSelector(
-          rule,
-          transformations,
-          tagNode,
-          replacementNode
-        );
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkTags.bind(selectors),
+      matcher: (node) => node.value === "vaadin-avatar-group-list-box",
+      replacer: () => parser.tag({ value: "vaadin-avatar-group-list-box" }),
     });
-    transformations.forEach((transformation) => transformation());
   };
 }
 

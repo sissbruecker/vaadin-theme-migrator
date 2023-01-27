@@ -5,105 +5,71 @@ function createSelectorTransformer(rule) {
   return (selectors) => {
     // [part='months'] -> ::slotted(vaadin-date-picker-month-scroller)
     // https://github.com/vaadin/web-components/pull/4770
-    let transformations = [];
-    selectors.walkAttributes((attributeNode) => {
-      if (
-        attributeNode.attribute === "part" &&
-        attributeNode.value === "months"
-      ) {
-        const replacementNode = parser.tag({
-          value: "vaadin-date-picker-month-scroller",
-        });
-        convertToSlottedSelector(rule, transformations, attributeNode, replacementNode);
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkAttributes.bind(selectors),
+      matcher: (node) => node.attribute === "part" && node.value === "months",
+      replacer: () =>
+        parser.tag({ value: "vaadin-date-picker-month-scroller" }),
     });
-    transformations.forEach((transformation) => transformation());
 
     // [part='years'] -> ::slotted(vaadin-date-picker-year-scroller)
     // https://github.com/vaadin/web-components/pull/4770
-    transformations = [];
-    selectors.walkAttributes((attributeNode) => {
-      if (
-        attributeNode.attribute === "part" &&
-        attributeNode.value === "years"
-      ) {
-        const replacementNode = parser.tag({
-          value: "vaadin-date-picker-year-scroller",
-        });
-        convertToSlottedSelector(rule, transformations, attributeNode, replacementNode);
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkAttributes.bind(selectors),
+      matcher: (node) => node.attribute === "part" && node.value === "years",
+      replacer: () => parser.tag({ value: "vaadin-date-picker-year-scroller" }),
     });
-    transformations.forEach((transformation) => transformation());
 
     // [part='today-button'] -> ::slotted(vaadin-button[slot='today-button'])
     // https://github.com/vaadin/web-components/pull/4714
-    transformations = [];
-    selectors.walkAttributes((attributeNode) => {
-      if (
-        attributeNode.attribute === "part" &&
-        attributeNode.value === "today-button"
-      ) {
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkAttributes.bind(selectors),
+      matcher: (node) =>
+        node.attribute === "part" && node.value === "today-button",
+      replacer: () => {
         const replacementNode = parser.selector();
         replacementNode.append(parser.tag({ value: "vaadin-button" }));
-        replacementNode.append(
-          parser.attribute({
-            attribute: "slot",
-            value: '"today-button"',
-            operator: "=",
-          })
-        );
-        convertToSlottedSelector(
-          rule,
-          transformations,
-          attributeNode,
-          replacementNode
-        );
-      }
+        const attributeNode = parser.attribute({
+          attribute: "slot",
+          operator: "=",
+        });
+        attributeNode.setValue("today-button", { quoteMark: '"' });
+        replacementNode.append(attributeNode);
+        return replacementNode;
+      },
     });
-    transformations.forEach((transformation) => transformation());
 
     // [part='cancel-button'] -> ::slotted[vaadin-button(slot='cancel-button'])
     // https://github.com/vaadin/web-components/pull/4714
-    transformations = [];
-    selectors.walkAttributes((attributeNode) => {
-      if (
-        attributeNode.attribute === "part" &&
-        attributeNode.value === "cancel-button"
-      ) {
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkAttributes.bind(selectors),
+      matcher: (node) =>
+        node.attribute === "part" && node.value === "cancel-button",
+      replacer: () => {
         const replacementNode = parser.selector();
         replacementNode.append(parser.tag({ value: "vaadin-button" }));
-        replacementNode.append(
-          parser.attribute({
-            attribute: "slot",
-            value: '"cancel-button"',
-            operator: "=",
-          })
-        );
-        convertToSlottedSelector(
-          rule,
-          transformations,
-          attributeNode,
-          replacementNode
-        );
-      }
+        const attributeNode = parser.attribute({
+          attribute: "slot",
+          operator: "=",
+        });
+        attributeNode.setValue("cancel-button", { quoteMark: '"' });
+        replacementNode.append(attributeNode);
+        return replacementNode;
+      },
     });
-    transformations.forEach((transformation) => transformation());
 
     // vaadin-button -> ::slotted(vaadin-button)
     // https://github.com/vaadin/web-components/pull/4714
-    transformations = [];
-    selectors.walkTags((tagNode) => {
-      if (tagNode.value === "vaadin-button") {
-        const replacementNode = parser.tag({ value: "vaadin-button" });
-        convertToSlottedSelector(
-          rule,
-          transformations,
-          tagNode,
-          replacementNode
-        );
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkTags.bind(selectors),
+      matcher: (node) => node.value === "vaadin-button",
+      replacer: () => parser.tag({ value: "vaadin-button" }),
     });
-    transformations.forEach((transformation) => transformation());
   };
 }
 

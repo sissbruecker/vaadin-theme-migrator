@@ -5,19 +5,14 @@ function createSelectorTransformer(rule) {
   return (selectors) => {
     // [part='overlay-content'] -> ::slotted(vaadin-date-picker-overlay-content)
     // https://github.com/vaadin/web-components/pull/3904
-    let transformations = [];
-    selectors.walkAttributes((attributeNode) => {
-      if (
-        attributeNode.attribute === "part" &&
-        attributeNode.value === "overlay-content"
-      ) {
-        const replacementNode = parser.tag({
-          value: "vaadin-date-picker-overlay-content",
-        });
-        convertToSlottedSelector(rule, transformations, attributeNode, replacementNode);
-      }
+    convertToSlottedSelector({
+      rule,
+      walker: selectors.walkAttributes.bind(selectors),
+      matcher: (node) =>
+        node.attribute === "part" && node.value === "overlay-content",
+      replacer: () =>
+        parser.tag({ value: "vaadin-date-picker-overlay-content" }),
     });
-    transformations.forEach((transformation) => transformation());
   };
 }
 
