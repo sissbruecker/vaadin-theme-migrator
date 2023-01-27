@@ -8,8 +8,17 @@ describe("snapshots", () => {
   const themePath = path.resolve("test/fixtures/snapshot-theme");
   const theme = getThemeInfo(themePath);
 
-  before(() => {
-    migrate(themePath);
+  function clearMigratedFiles() {
+    fs.readdirSync(theme.componentsPath, { withFileTypes: true })
+      .filter((item) => item.isFile() && item.name.includes(".generated.css"))
+      .forEach((file) =>
+        fs.unlinkSync(path.join(theme.componentsPath, file.name))
+      );
+  }
+
+  before(async () => {
+    clearMigratedFiles();
+    await migrate(themePath);
   });
 
   theme.componentFiles.forEach((componentFile) => {
