@@ -5,6 +5,7 @@ const { getThemeInfo } = require("./theme");
 
 const componentPlugins = [
   "vaadin-avatar-group",
+  "vaadin-crud",
   "vaadin-date-picker-overlay",
   "vaadin-date-picker-overlay-content",
   "vaadin-date-time-picker",

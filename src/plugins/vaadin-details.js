@@ -89,7 +89,7 @@ function createSelectorTransformer(rule) {
 }
 
 module.exports = () => ({
-  postcssPlugin: "vaadin-avatar-group-plugin",
+  postcssPlugin: "vaadin-details-plugin",
   Rule(rule) {
     const transformer = createSelectorTransformer(rule);
     const processor = parser(transformer);

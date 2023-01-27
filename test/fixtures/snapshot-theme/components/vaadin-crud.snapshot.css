@@ -1,0 +1,33 @@
+/* Refactor slotted default grid */
+::slotted(vaadin-crud-grid) {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}
+
+::slotted(vaadin-crud-grid) {
+    --foo: bar;
+}
+
+#ignore-me {
+    --foo: bar;
+}
+
+/* Refactor new button */
+::slotted([slot="new-button"]) {
+    --foo: bar;
+}
+
+::slotted([slot="new-button"]) {
+    --foo: bar;
+}
+
+::slotted([slot="new-button"]) {
+    --foo: bar;
+}
+
+[ignore-me] {
+    --foo: bar;
+}
