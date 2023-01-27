@@ -3,7 +3,8 @@ const convertToSlottedSelector = require("./utils/convertToSlottedSelector");
 
 function createSelectorTransformer(rule) {
   return (selectors) => {
-    // [part='months'] -> ::slotted[vaadin-date-picker-month-scroller]
+    // [part='months'] -> ::slotted(vaadin-date-picker-month-scroller)
+    // https://github.com/vaadin/web-components/pull/4770
     let transformations = [];
     selectors.walkAttributes((attributeNode) => {
       if (
@@ -18,7 +19,8 @@ function createSelectorTransformer(rule) {
     });
     transformations.forEach((transformation) => transformation());
 
-    // [part='years'] -> ::slotted[vaadin-date-picker-year-scroller]
+    // [part='years'] -> ::slotted(vaadin-date-picker-year-scroller)
+    // https://github.com/vaadin/web-components/pull/4770
     transformations = [];
     selectors.walkAttributes((attributeNode) => {
       if (
@@ -33,7 +35,8 @@ function createSelectorTransformer(rule) {
     });
     transformations.forEach((transformation) => transformation());
 
-    // [part='today-button'] -> ::slotted[vaadin-button[slot='today-button']]
+    // [part='today-button'] -> ::slotted(vaadin-button[slot='today-button'])
+    // https://github.com/vaadin/web-components/pull/4714
     transformations = [];
     selectors.walkAttributes((attributeNode) => {
       if (
@@ -59,7 +62,8 @@ function createSelectorTransformer(rule) {
     });
     transformations.forEach((transformation) => transformation());
 
-    // [part='cancel-button'] -> ::slotted[vaadin-button[slot='cancel-button']]
+    // [part='cancel-button'] -> ::slotted[vaadin-button(slot='cancel-button'])
+    // https://github.com/vaadin/web-components/pull/4714
     transformations = [];
     selectors.walkAttributes((attributeNode) => {
       if (
@@ -85,7 +89,8 @@ function createSelectorTransformer(rule) {
     });
     transformations.forEach((transformation) => transformation());
 
-    // vaadin-button -> ::slotted[vaadin-button]
+    // vaadin-button -> ::slotted(vaadin-button)
+    // https://github.com/vaadin/web-components/pull/4714
     transformations = [];
     selectors.walkTags((tagNode) => {
       if (tagNode.value === "vaadin-button") {

@@ -3,7 +3,8 @@ const convertToSlottedSelector = require("./utils/convertToSlottedSelector");
 
 function createSelectorTransformer(rule) {
   return (selectors) => {
-    // [part='overlay-content'] -> ::slotted[vaadin-date-picker-overlay-content]
+    // [part='overlay-content'] -> ::slotted(vaadin-date-picker-overlay-content)
+    // https://github.com/vaadin/web-components/pull/3904
     let transformations = [];
     selectors.walkAttributes((attributeNode) => {
       if (

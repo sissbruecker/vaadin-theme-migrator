@@ -3,7 +3,8 @@ const convertToSlottedSelector = require("./utils/convertToSlottedSelector");
 
 function createSelectorTransformer(rule) {
   return (selectors) => {
-    // [part='avatar'] -> ::slotted[vaadin-avatar]
+    // [part='avatar'] -> ::slotted(vaadin-avatar)
+    // https://github.com/vaadin/web-components/pull/4723
     let transformations = [];
     selectors.walkAttributes((attributeNode) => {
       if (
@@ -21,7 +22,8 @@ function createSelectorTransformer(rule) {
     });
     transformations.forEach((transformation) => transformation());
 
-    // vaadin-avatar -> ::slotted[vaadin-avatar]
+    // vaadin-avatar -> ::slotted(vaadin-avatar)
+    // https://github.com/vaadin/web-components/pull/4723
     transformations = [];
     selectors.walkTags((tagNode) => {
       if (tagNode.value === "vaadin-avatar") {
@@ -36,7 +38,8 @@ function createSelectorTransformer(rule) {
     });
     transformations.forEach((transformation) => transformation());
 
-    // vaadin-avatar-group-list-box -> ::slotted[vaadin-avatar-group-list-box]
+    // vaadin-avatar-group-list-box -> ::slotted(vaadin-avatar-group-list-box)
+    // https://github.com/vaadin/web-components/pull/3905
     transformations = [];
     selectors.walkTags((tagNode) => {
       if (tagNode.value === "vaadin-avatar-group-list-box") {
