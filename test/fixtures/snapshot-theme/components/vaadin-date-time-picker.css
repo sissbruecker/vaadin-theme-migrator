@@ -1,0 +1,20 @@
+/* Refactor to not use extensions */
+::slotted(vaadin-date-time-picker-date-picker) {
+    --foo: bar;
+}
+
+::slotted(vaadin-date-time-picker-date-picker:not(:first-child)) {
+    --foo: bar;
+}
+
+::slotted(vaadin-date-time-picker-time-picker) {
+    --foo: bar;
+}
+
+::slotted(vaadin-date-time-picker-time-picker:not(:first-child)) {
+    --foo: bar;
+}
+
+::slotted(ignore-me) {
+    --foo: bar;
+}

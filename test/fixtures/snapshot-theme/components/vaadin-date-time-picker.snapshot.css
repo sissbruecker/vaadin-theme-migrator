@@ -1,0 +1,20 @@
+/* Refactor to not use extensions */
+::slotted([slot="date-picker"]) {
+    --foo: bar;
+}
+
+::slotted([slot="date-picker"]:not(:first-child)) {
+    --foo: bar;
+}
+
+::slotted([slot="time-picker"]) {
+    --foo: bar;
+}
+
+::slotted([slot="time-picker"]:not(:first-child)) {
+    --foo: bar;
+}
+
+::slotted(ignore-me) {
+    --foo: bar;
+}
