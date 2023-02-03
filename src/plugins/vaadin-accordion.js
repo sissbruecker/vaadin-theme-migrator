@@ -64,18 +64,18 @@ function createSelectorTransformer(rule) {
       },
     });
 
-    // [part='toggle'] -> Move to vaadin-details-summary.css
+    // [part='toggle'] -> Move to vaadin-accordion-heading.css
     // https://github.com/vaadin/web-components/pull/5093
     selectors.walkAttributes((attributeNode) => {
       if (
         attributeNode.attribute === "part" &&
         attributeNode.value === "toggle"
       ) {
-        createTodo(rule, "Move this rule to vaadin-details-summary.css");
+        createTodo(rule, "Move this rule to vaadin-accordion-heading.css");
       }
     });
 
-    // [part='summary-content'] -> Move to vaadin-details-summary.css
+    // [part='summary-content'] -> Move to vaadin-accordion-heading.css
     // https://github.com/vaadin/web-components/pull/5093
     selectors.walkAttributes((attributeNode) => {
       if (
@@ -83,14 +83,14 @@ function createSelectorTransformer(rule) {
         attributeNode.value === "summary-content"
       ) {
         attributeNode.setValue("content");
-        createTodo(rule, "Move this rule to vaadin-details-summary.css");
+        createTodo(rule, "Move this rule to vaadin-accordion-heading.css");
       }
     });
   };
 }
 
 module.exports = () => ({
-  postcssPlugin: "vaadin-details-plugin",
+  postcssPlugin: "vaadin-accordion-plugin",
   Rule(rule) {
     const transformer = createSelectorTransformer(rule);
     const processor = parser(transformer);

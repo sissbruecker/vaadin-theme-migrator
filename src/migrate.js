@@ -4,6 +4,7 @@ const postcss = require("postcss");
 const { getThemeInfo } = require("./theme");
 
 const componentPlugins = [
+  "vaadin-accordion",
   "vaadin-avatar-group",
   "vaadin-crud",
   "vaadin-date-picker-overlay",

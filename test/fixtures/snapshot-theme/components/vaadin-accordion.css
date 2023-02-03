@@ -1,0 +1,25 @@
+/* Refactor slotted details summary */
+[part="summary"] {
+    --foo: bar;
+}
+
+div[role="heading"] {
+    --foo: bar;
+}
+
+div[role="heading"]:first-child {
+    --foo: bar;
+}
+
+/* TODOs */
+[part="toggle"] {
+    --foo: bar;
+}
+
+[part="summary-content"] {
+    --foo: bar;
+}
+
+[part="ignore-me"] {
+    --foo: bar;
+}
