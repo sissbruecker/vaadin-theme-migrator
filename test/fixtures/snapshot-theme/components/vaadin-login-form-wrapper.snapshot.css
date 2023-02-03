@@ -1,0 +1,24 @@
+/* Forgot password button moved to light DOM */
+::slotted([slot="forgot-password"]) {
+    --foo: bar;
+}
+
+#ignore-me {
+    --foo: bar;
+}
+
+::slotted([slot="forgot-password"]) {
+    --foo: bar;
+}
+
+::slotted([slot="forgot-password"]) {
+    --foo: bar;
+}
+
+ignore-me[theme~="forgot-password"] {
+    --foo: bar;
+}
+
+vaadin-button[ignore-me~="forgot-password"] {
+    --foo: bar;
+}
