@@ -1,0 +1,25 @@
+/* Refactor navbar pseudo-element usage */
+[part="navbar"] {
+    --foo: bar;
+}
+
+[part="navbar"][ignore-me] {
+    --foo: bar;
+}
+
+[part="navbar"] .ignore-me {
+    --foo: bar;
+}
+
+/* Refactor navbar pseudo-element usage */
+[part="drawer"] {
+    --foo: bar;
+}
+
+[part="drawer"][ignore-me] {
+    --foo: bar;
+}
+
+[part="drawer"] .ignore-me {
+    --foo: bar;
+}
