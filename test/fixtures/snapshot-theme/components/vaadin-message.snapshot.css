@@ -1,0 +1,16 @@
+/* Refactor to slotted avatar */
+::slotted(vaadin-avatar) {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}
+
+::slotted(vaadin-avatar) {
+    --foo: bar;
+}
+
+[part="ignore-me"] {
+    --foo: bar;
+}
