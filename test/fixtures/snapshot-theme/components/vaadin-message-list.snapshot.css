@@ -1,0 +1,8 @@
+/* Refactor to slotted message */
+::slotted(vaadin-message) {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}
