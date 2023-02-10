@@ -6,6 +6,32 @@ See below for a list of supported migrations.
 A lot of necessary changes are done automatically.
 If automatic conversion of a change is not implemented, or would result in invalid CSS selectors, the tool will create a TODO in the respective file / on the respective style rule instead.
 
+Example for `vaadin-accordion.css`:
+```diff
+/* vaadin-accordion.css */
+
+- [part="summary"] {
++ ::slotted([slot="summary"]) {
+    --foo: bar;
+}
+
+- div[role="heading"] {
++ ::slotted([slot="summary"]) {
+    --foo: bar;
+}
+
++ /* TODO: Migration issue: Move this rule to vaadin-accordion-heading.css */
+[part="toggle"] {
+    --foo: bar;
+}
+
+- [part="summary-content"] {
++ /* TODO: Migration issue: Move this rule to vaadin-accordion-heading.css */
++ [part="content"] {
+    --foo: bar;
+}
+```
+
 > **Warning**
 > This tool does not support converting themes to the new global styling approach introduced with v24.
 > It only attempts to fix breaking changes introduced as part of v24.
