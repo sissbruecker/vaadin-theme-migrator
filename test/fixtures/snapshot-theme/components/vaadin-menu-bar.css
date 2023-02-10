@@ -1,0 +1,20 @@
+/* Refactor to slotted buttons */
+vaadin-menu-bar-button {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}
+
+[part="menu-bar-button"] {
+    --foo: bar;
+}
+
+[part="ignore-me"] {
+    --foo: bar;
+}
+
+[ignore-me] {
+    --foo: bar;
+}

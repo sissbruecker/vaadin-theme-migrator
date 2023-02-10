@@ -13,6 +13,7 @@ const componentPlugins = [
   "vaadin-date-time-picker",
   "vaadin-details",
   "vaadin-login-form-wrapper",
+  "vaadin-menu-bar",
   "vaadin-month-calendar",
 ];
 
