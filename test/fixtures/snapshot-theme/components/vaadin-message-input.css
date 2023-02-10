@@ -1,0 +1,21 @@
+/* Refactor to slotted text area */
+vaadin-message-input-text-area {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}
+
+/* Refactor to slotted button */
+vaadin-message-input-button {
+    --foo: bar;
+}
+
+vaadin-message-input-button[theme="primary"] {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}

@@ -1,0 +1,21 @@
+/* Refactor to slotted text area */
+::slotted(vaadin-text-area) {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}
+
+/* Refactor to slotted button */
+::slotted(vaadin-button) {
+    --foo: bar;
+}
+
+::slotted(vaadin-button[theme="primary"]) {
+    --foo: bar;
+}
+
+ignore-me {
+    --foo: bar;
+}

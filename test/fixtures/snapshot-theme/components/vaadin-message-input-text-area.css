@@ -1,0 +1,7 @@
+[part='input-field'] {
+    --foo: bar;
+}
+
+[part='helper-text'] {
+    --foo: bar;
+}

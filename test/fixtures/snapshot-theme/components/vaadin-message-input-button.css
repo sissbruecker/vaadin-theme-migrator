@@ -1,0 +1,7 @@
+[part='label'] {
+    --foo: bar;
+}
+
+[part='prefix'] {
+    --foo: bar;
+}

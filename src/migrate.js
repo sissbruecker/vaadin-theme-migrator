@@ -14,6 +14,9 @@ const componentPlugins = [
   "vaadin-details",
   "vaadin-login-form-wrapper",
   "vaadin-menu-bar",
+  "vaadin-message-input",
+  "vaadin-message-input-button",
+  "vaadin-message-input-text-area",
   "vaadin-month-calendar",
 ];
 
