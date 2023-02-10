@@ -1,0 +1,55 @@
+/* Refactor slotted chips */
+
+/* With element name */
+vaadin-multi-select-combo-box-chip {
+    --foo: bar;
+}
+
+vaadin-multi-select-combo-box-chip[part="chip"] {
+    --foo: bar;
+}
+
+vaadin-multi-select-combo-box-chip[part="overflow"] {
+    --foo: bar;
+}
+
+vaadin-multi-select-combo-box-chip[part="overflow-one"] {
+    --foo: bar;
+}
+
+vaadin-multi-select-combo-box-chip[part="overflow"][part="overflow-one"] {
+    --foo: bar;
+}
+
+vaadin-multi-select-combo-box-chip[part="chip"][part="overflow"][part="overflow-one"] {
+    --foo: bar;
+}
+
+/* With part name */
+[part="chip"] {
+    --foo: bar;
+}
+
+[part="overflow"] {
+    --foo: bar;
+}
+
+[part="overflow-one"] {
+    --foo: bar;
+}
+
+[part="overflow-two"] {
+    --foo: bar;
+}
+
+[part="overflow-three"] {
+    --foo: bar;
+}
+
+[part="overflow"][part="overflow-one"] {
+    --foo: bar;
+}
+
+[part="chip"][part="overflow"][part="overflow-one"] {
+    --foo: bar;
+}

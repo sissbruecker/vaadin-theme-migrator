@@ -1,0 +1,55 @@
+/* Refactor slotted chips */
+
+/* With element name */
+::slotted([slot="chip"]) {
+    --foo: bar;
+}
+
+::slotted([slot="chip"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="1"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="1"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="1"]) {
+    --foo: bar;
+}
+
+/* With part name */
+::slotted([slot="chip"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="1"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="2"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="3"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="1"]) {
+    --foo: bar;
+}
+
+::slotted([slot="overflow"][count="1"]) {
+    --foo: bar;
+}

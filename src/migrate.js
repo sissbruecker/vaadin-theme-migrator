@@ -21,6 +21,7 @@ const componentPlugins = [
   "vaadin-message-input-text-area",
   "vaadin-message-list",
   "vaadin-month-calendar",
+  "vaadin-multi-select-combo-box",
 ];
 
 function getPlugins(componentFile) {

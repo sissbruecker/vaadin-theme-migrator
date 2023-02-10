@@ -1,23 +1,6 @@
 const { Comment } = require("postcss");
 const parser = require("postcss-selector-parser");
-
-function extractCompoundSelector(childNode) {
-  const sequence = [];
-
-  // Find selector start
-  let currentNode = childNode;
-  while (currentNode.prev() && currentNode.prev().type !== "combinator") {
-    currentNode = currentNode.prev();
-  }
-
-  // Collect nodes until next combinator, or end
-  while (currentNode && currentNode.type !== "combinator") {
-    sequence.push(currentNode);
-    currentNode = currentNode.next();
-  }
-
-  return sequence;
-}
+const extractCompoundSelector = require("./extractCompoundSelector.js");
 
 function hasFollowingCombinator(childNode) {
   let currentNode = childNode;
@@ -76,7 +59,7 @@ function convertToSlottedSelector({
     const compoundSelector = extractCompoundSelector(visitedNode);
 
     // Create slotted selector with tag name
-    const replacementNode = replacer();
+    const replacementNode = replacer(visitedNode, compoundSelector);
     const slottedNode = parser.pseudo({ value: "::slotted" });
     const slottedSelector = parser.selector();
     slottedNode.append(slottedSelector);
