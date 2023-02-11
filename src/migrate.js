@@ -4,7 +4,7 @@ const postcss = require("postcss");
 const { getThemeInfo } = require("./theme");
 
 const componentPlugins = [
-  "vaadin-accordion",
+  "vaadin-accordion-panel",
   "vaadin-app-layout",
   "vaadin-avatar-group",
   "vaadin-crud",

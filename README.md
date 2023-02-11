@@ -6,10 +6,8 @@ See below for a list of supported migrations.
 A lot of necessary changes are done automatically.
 If automatic conversion of a change is not implemented, or would result in invalid CSS selectors, the tool will create a TODO in the respective file / on the respective style rule instead.
 
-Example for `vaadin-accordion.css`:
+Example for `vaadin-accordion-panel.css`:
 ```diff
-/* vaadin-accordion.css */
-
 - [part="summary"] {
 + ::slotted([slot="summary"]) {
     --foo: bar;
