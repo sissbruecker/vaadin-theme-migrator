@@ -36,6 +36,23 @@ Example for `vaadin-accordion.css`:
 > This tool does not support converting themes to the new global styling approach introduced with v24.
 > It only attempts to fix breaking changes introduced as part of v24.
 
+## Usage
+
+Requirements:
+- Make sure you have installed a recent version of node
+
+Clone this repo, then run the index file and pass it the path to a Vaadin theme folder:
+```shell
+node index.js /path/to/my-vaadin-app/frontend/themes/my-theme
+```
+This will create new `*.migrated.css` files for all component style files that have been migrated.
+
+Alternatively, use the `--override` flag to override the original files:
+```shell
+node index.js /path/to/my-vaadin-app/frontend/themes/my-theme --override
+```
+Make sure you have no pending changes in those files, so that you can roll back the migration if needed.
+
 ## Supported Migrations
 
 | Component              | Breaking Change                                                                |   Support                            |
@@ -57,8 +74,6 @@ Example for `vaadin-accordion.css`:
 | date-time-picker       | Replace custom date-picker and time-picker extensions with original components | Supported                            |
 | details                | Move summary button to light DOM                                               | Supported /w Todos                   |
 | grid                   | Move vaadin-grid-filter text field to slot                                     |                                      |
-| grid                   | Reflect row and cell states as part names                                      | No breaking changes                  |
-| grid                   | Add cellPartNameGenerator to support native ::part()                           | No breaking changes                  |
 | login                  | Move forgot-password button out of Shadow DOM                                  | Supported                            |
 | login                  | Remove part attribute from elements in global scope                            | Unclear impact, not in upgrade guide |
 | menu-bar               | Move menu-bar-buttons into a slot                                              | Supported                            |
@@ -69,7 +84,7 @@ Example for `vaadin-accordion.css`:
 | message-list           | Move vaadin-message elements into a slot                                       | Supported                            |
 | message-list           | Move avatar in vaadin-message to a slot                                        | Supported /w Todos                   |
 | multi-select-combo-box | Make multi-select-combo-box-item not extend vaadin-item                        |                                      |
-| multi-select-combo-box | Add ::part() selector support to chips in MultiSelectComboBox                  |                                      |
+| multi-select-combo-box | Add ::part() selector support to chips in MultiSelectComboBox                  | Supported                            |
 | select                 | Make vaadin-select-item not extend vaadin-item                                 |                                      |
 | select                 | Make vaadin-select-list-box not extend vaadin-list-box                         |                                      |
 | time-picker            | Make time-picker item not extend combo-box item                                |                                      |

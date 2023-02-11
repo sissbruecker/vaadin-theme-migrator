@@ -3,4 +3,4 @@
 
 node_modules
 
-test/fixtures/**/*.generated.css
+test/fixtures/snapshot-theme/components/*.migrated.css

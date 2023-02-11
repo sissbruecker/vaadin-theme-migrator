@@ -16,7 +16,7 @@ function getThemeInfo(location) {
         (item) =>
           item.isFile() &&
           path.extname(item.name) === ".css" &&
-          !item.name.includes("generated.css") &&
+          !item.name.includes("migrated.css") &&
           !item.name.includes("snapshot.css")
       )
       .map((item) => path.join(componentsPath, item.name));

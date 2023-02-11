@@ -33,24 +33,26 @@ function getPlugins(componentFile) {
   return [];
 }
 
-async function migrate(themeLocation) {
+async function migrate(themeLocation, options) {
+  options = options || {};
   const theme = getThemeInfo(themeLocation);
 
   for (const inputFile of theme.componentFiles) {
     const basename = path.basename(inputFile, ".css");
-    const outputFile = path.join(
-      theme.componentsPath,
-      `${basename}.generated.css`
-    );
+    const outputFile = options.override
+      ? inputFile
+      : path.join(theme.componentsPath, `${basename}.migrated.css`);
 
-    const contents = fs.readFileSync(inputFile);
+    const contents = fs.readFileSync(inputFile, 'utf8');
     const plugins = getPlugins(inputFile);
 
     const output = await postcss(plugins).process(contents, {
       from: inputFile,
       to: outputFile,
     });
-    fs.writeFileSync(outputFile, output.css);
+    if (output.css !== contents) {
+      fs.writeFileSync(outputFile, output.css);
+    }
   }
 }
 

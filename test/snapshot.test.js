@@ -10,7 +10,7 @@ describe("snapshots", () => {
 
   function clearMigratedFiles() {
     fs.readdirSync(theme.componentsPath, { withFileTypes: true })
-      .filter((item) => item.isFile() && item.name.includes(".generated.css"))
+      .filter((item) => item.isFile() && item.name.includes(".migrated.css"))
       .forEach((file) =>
         fs.unlinkSync(path.join(theme.componentsPath, file.name))
       );
@@ -27,7 +27,7 @@ describe("snapshots", () => {
     it(`should migrate '${basename}' component file`, () => {
       const outputFile = path.join(
         theme.componentsPath,
-        `${basename}.generated.css`
+        `${basename}.migrated.css`
       );
       const snapshotFile = path.join(
         theme.componentsPath,

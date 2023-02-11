@@ -1,10 +1,5 @@
 const { migrate } = require("./src/migrate");
 
-// hard-coded for now
-const themeLocation = "test/fixtures/snapshot-theme";
+const themeLocation = process.argv[2];
 
-async function run() {
-  await migrate(themeLocation);
-}
-
-run();
+migrate(themeLocation, { override: process.argv.includes("--override") });
