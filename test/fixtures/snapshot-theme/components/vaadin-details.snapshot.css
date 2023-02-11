@@ -26,3 +26,12 @@
 [part="ignore-me"] {
     --foo: bar;
 }
+
+@media (hover: hover) {
+    /* TODO: Migration issue: Combining selectors after ::slotted() is not supported */
+    /* TODO: Migration issue: Move this rule to vaadin-details-summary.css */
+    :host(:not([disabled])) ::slotted([slot="summary"]:hover),
+    :host(:not([disabled])) ::slotted([slot="summary"]:hover) [part='toggle'] {
+        --foo: bar;
+    }
+}

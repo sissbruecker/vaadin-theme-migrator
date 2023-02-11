@@ -4,7 +4,7 @@ const { Comment } = require("postcss");
 
 function createTodo(rule, text) {
   const todo = new Comment({ text: `TODO: Migration issue: ${text}` });
-  rule.root().insertBefore(rule, todo);
+  rule.parent.insertBefore(rule, todo);
 }
 
 function headingMatcher(node) {

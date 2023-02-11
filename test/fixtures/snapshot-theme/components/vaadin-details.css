@@ -23,3 +23,10 @@ div[role="heading"]:first-child {
 [part="ignore-me"] {
     --foo: bar;
 }
+
+@media (hover: hover) {
+    :host(:not([disabled])) [part='summary']:hover,
+    :host(:not([disabled])) [part='summary']:hover [part='toggle'] {
+        --foo: bar;
+    }
+}
