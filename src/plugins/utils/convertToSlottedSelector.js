@@ -15,8 +15,8 @@ function hasFollowingCombinator(childNode) {
   return false;
 }
 
-function containsPartSelector(selector) {
-  return selector.nodes.some(
+function containsPartSelector(nodes) {
+  return nodes.some(
     (node) => node.type === "pseudo" && node.value === "::part"
   );
 }
@@ -69,13 +69,27 @@ function convertToSlottedSelector({
     compoundSelector.forEach((node) => {
       // Ignore current attribute node
       // Ignore tag nodes, makes no sense to combine them with the new slotted selector tag name
-      if (node !== visitedNode && node.type !== "tag") {
+      // Ignore pseudo-elements, these need to be appended to the slotted selector
+      if (
+        node !== visitedNode &&
+        node.type !== "tag" &&
+        (node.type !== "pseudo" || !node.value.startsWith("::"))
+      ) {
         slottedSelector.append(node.clone());
       }
     });
 
     // Replace attribute selector with slotted selector
     transformations.push(() => visitedNode.replaceWith(slottedNode));
+
+    // Append pseudo-elements
+    compoundSelector.forEach((node) => {
+      if (node.type === "pseudo" && node.value.startsWith("::")) {
+        transformations.push(() =>
+          slottedNode.parent.insertAfter(slottedNode, node.clone())
+        );
+      }
+    });
 
     // Remove existing compound selector
     compoundSelector.forEach((node) =>
@@ -98,8 +112,8 @@ function convertToSlottedSelector({
 
     // Output warning if new slotted selector contains part selector,
     // which is not valid CSS
-    if (containsPartSelector(slottedSelector)) {
-      createTodo(rule, "Part selector within ::slotted() is not supported");
+    if (containsPartSelector(compoundSelector)) {
+      createTodo(rule, "Part selector after ::slotted() is not supported");
     }
   });
 

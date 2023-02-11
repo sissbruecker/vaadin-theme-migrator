@@ -16,6 +16,14 @@ vaadin-avatar:not(:first-child) {
     --foo: bar;
 }
 
+[part="avatar"]::before {
+    --foo: bar;
+}
+
+[part="avatar"]::after {
+    --foo: bar;
+}
+
 /* Compound selector with tag name */
 vaadin-avatar[part="avatar"] {
     --foo: bar;
