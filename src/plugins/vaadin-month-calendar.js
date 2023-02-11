@@ -1,5 +1,26 @@
 const parser = require("postcss-selector-parser");
 
+function getParentSelectors(node) {
+  const parents = [];
+
+  while (node.parent) {
+    parents.push(node.parent);
+    node = node.parent;
+  }
+
+  return parents;
+}
+
+function stateAttributeMatcher(node) {
+  const parentSelectors = getParentSelectors(node);
+  const targetsHost = parentSelectors.some(node => node.type === 'pseudo' && node.value === ':host');
+
+  return (
+    !targetsHost &&
+    ["disabled", "focused", "selected", "today"].includes(node.attribute)
+  );
+}
+
 function createSelectorTransformer(rule) {
   return (selectors) => {
     // [part='date'] -> [part~='date']
@@ -19,11 +40,7 @@ function createSelectorTransformer(rule) {
     // [today] -> [part~='today']
     // https://github.com/vaadin/web-components/pull/4850
     selectors.walkAttributes((attributeNode) => {
-      if (
-        ["disabled", "focused", "selected", "today"].includes(
-          attributeNode.attribute
-        )
-      ) {
+      if (stateAttributeMatcher(attributeNode)) {
         const replacementNode = parser.attribute({
           attribute: "part",
           operator: "~=",

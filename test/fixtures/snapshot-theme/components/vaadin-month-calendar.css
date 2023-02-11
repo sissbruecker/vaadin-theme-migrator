@@ -12,6 +12,14 @@
     --foo: bar;
 }
 
+:host([disabled]) * {
+    --foo: bar;
+}
+
+:host(disabled) [part="date"][disabled] {
+    --foo: bar;
+}
+
 [focused] {
     --foo: bar;
 }
