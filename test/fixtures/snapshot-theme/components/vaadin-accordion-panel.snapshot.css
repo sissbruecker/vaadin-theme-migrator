@@ -12,12 +12,12 @@
 }
 
 /* TODOs */
-/* TODO: Migration issue: Move this rule to vaadin-accordion-heading.css */
+/* TODO: Migration issue: Move rule targeting the 'toggle' part to vaadin-accordion-heading.css */
 [part="toggle"] {
     --foo: bar;
 }
 
-/* TODO: Migration issue: Move this rule to vaadin-accordion-heading.css */
+/* TODO: Migration issue: Move rules targeting the 'content' part to vaadin-accordion-heading.css */
 
 [part="content"] {
     --foo: bar;

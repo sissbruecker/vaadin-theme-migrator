@@ -12,12 +12,12 @@
 }
 
 /* TODOs */
-/* TODO: Migration issue: Move this rule to vaadin-details-summary.css */
+/* TODO: Migration issue: Move rules targeting the 'toggle' part to vaadin-details-summary.css */
 [part="toggle"] {
     --foo: bar;
 }
 
-/* TODO: Migration issue: Move this rule to vaadin-details-summary.css */
+/* TODO: Migration issue: Move rules targeting the 'content' part to vaadin-details-summary.css */
 
 [part="content"] {
     --foo: bar;
@@ -29,7 +29,7 @@
 
 @media (hover: hover) {
     /* TODO: Migration issue: Combining selectors after ::slotted() is not supported */
-    /* TODO: Migration issue: Move this rule to vaadin-details-summary.css */
+    /* TODO: Migration issue: Move rules targeting the 'toggle' part to vaadin-details-summary.css */
     :host(:not([disabled])) ::slotted([slot="summary"]:hover),
     :host(:not([disabled])) ::slotted([slot="summary"]:hover) [part='toggle'] {
         --foo: bar;

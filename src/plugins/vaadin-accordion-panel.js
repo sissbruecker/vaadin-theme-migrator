@@ -71,7 +71,7 @@ function createSelectorTransformer(rule) {
         attributeNode.attribute === "part" &&
         attributeNode.value === "toggle"
       ) {
-        createTodo(rule, "Move this rule to vaadin-accordion-heading.css");
+        createTodo(rule, "Move rule targeting the 'toggle' part to vaadin-accordion-heading.css");
       }
     });
 
@@ -83,7 +83,7 @@ function createSelectorTransformer(rule) {
         attributeNode.value === "summary-content"
       ) {
         attributeNode.setValue("content");
-        createTodo(rule, "Move this rule to vaadin-accordion-heading.css");
+        createTodo(rule, "Move rules targeting the 'content' part to vaadin-accordion-heading.css");
       }
     });
   };
